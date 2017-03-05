@@ -13,8 +13,8 @@ namespace Accounting.Mappings
         {
             Table("dbo.Transfer");
             Id(m => m.Id);
-            Map(m => m.FromAccount);
-            Map(m => m.ToAccount);
+            References(m => m.FromAccount);
+            References(m => m.ToAccount);
             Map(m => m.Amount);
             Map(m => m.Date);
         }

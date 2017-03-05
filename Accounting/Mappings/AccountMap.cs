@@ -11,15 +11,16 @@ namespace Accounting.Mappings
     {
         public AccountMap()
         {
+            SchemaAction.None();
             Table("dbo.Account");
             Id(m => m.Id);
             Map(m => m.Name);
-            Map(m => m.Person);
-            Map(m => m.AccountType);
-            HasMany(m => m.Incomes).Inverse();
-            HasMany(m => m.Invoices).Inverse();
-            HasMany(m => m.InTransfers).Inverse();
-            HasMany(m => m.OutTransfers).Inverse();
+            References(m => m.Person);
+            References(m => m.AccountType);
+            HasMany(m => m.Incomes).Inverse().Not.LazyLoad();
+            HasMany(m => m.Invoices).Inverse().Not.LazyLoad();
+            HasMany(m => m.InTransfers).Inverse().Not.LazyLoad();
+            HasMany(m => m.OutTransfers).Inverse().Not.LazyLoad();
         }
 
     }

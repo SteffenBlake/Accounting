@@ -14,7 +14,7 @@ namespace Accounting.Models
             protected set { _Id = value; }
         }
 
-        public bool IsNew => Id == 0;
+        public virtual bool IsNew => Id == 0;
 
         public VMBase()
         {

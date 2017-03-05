@@ -13,11 +13,11 @@ namespace Accounting.Mappings
         {
             Table("dbo.Invoice");
             Id(m => m.Id);
-            HasMany(m => m.Entries).Inverse();
-            Map(m => m.PlaceType);
-            Map(m => m.TaxType);
+            HasMany(m => m.Entries).Inverse().Not.LazyLoad();
+            References(m => m.PlaceType);
+            References(m => m.TaxType);
             Map(m => m.Date);
-            Map(m => m.Account);
+            References(m => m.Account);
         }
 
     }

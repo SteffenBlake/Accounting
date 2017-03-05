@@ -13,7 +13,7 @@ namespace Accounting.Mappings
         {
             Table("dbo.Person");
             Id(m => m.Id);
-            HasMany(m => m.Accounts).Inverse();
+            HasMany(m => m.Accounts).Inverse().Not.LazyLoad();
             Map(m => m.FirstName).Nullable();
             Map(m => m.MiddleName).Nullable();
             Map(m => m.LastName).Nullable();

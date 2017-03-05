@@ -11,10 +11,10 @@ namespace Accounting.Models
         private string _Name;
         private VMPerson _Person;
         private VMAccountType _AccountType;
-        private List<VMIncome> _Incomes;
-        private List<VMInvoice> _Invoices;
-        private List<VMTransfer> _OutTransfers;
-        private List<VMTransfer> _InTransfers;
+        private IList<VMIncome> _Incomes;
+        private IList<VMInvoice> _Invoices;
+        private IList<VMTransfer> _OutTransfers;
+        private IList<VMTransfer> _InTransfers;
 
         public virtual string Name
         {
@@ -34,25 +34,25 @@ namespace Accounting.Models
             set { _AccountType = value; }
         }
 
-        public virtual List<VMIncome> Incomes
+        public virtual IList<VMIncome> Incomes
         {
             get { return _Incomes; }
             set { _Incomes = value; }
         }
 
-        public virtual List<VMInvoice> Invoices
+        public virtual IList<VMInvoice> Invoices
         {
             get { return _Invoices; }
             set { _Invoices = value; }
         }
 
-        public virtual List<VMTransfer> OutTransfers
+        public virtual IList<VMTransfer> OutTransfers
         {
             get { return _OutTransfers; }
             set { _OutTransfers = value; }
         }
 
-        public virtual List<VMTransfer> InTransfers
+        public virtual IList<VMTransfer> InTransfers
         {
             get { return _InTransfers; }
             set { _InTransfers = value; }

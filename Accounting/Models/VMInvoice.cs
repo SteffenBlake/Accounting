@@ -5,8 +5,8 @@ namespace Accounting.Models
 {
     public class VMInvoice : VMBase
     {
-        private List<VMInvoiceEntry> _Entries;
-        public virtual List<VMInvoiceEntry> Entries
+        private IList<VMInvoiceEntry> _Entries;
+        public virtual IList<VMInvoiceEntry> Entries
         {
             get { return _Entries; }
             set { _Entries = value; }

@@ -4,8 +4,8 @@ namespace Accounting.Models
 {
     public class VMPerson : VMBase
     {
-        private List<VMAccount> _Accounts;
-        public virtual List<VMAccount> Accounts
+        private IList<VMAccount> _Accounts;
+        public virtual IList<VMAccount> Accounts
         {
             get { return _Accounts; }
             set { _Accounts = value; }
@@ -38,6 +38,11 @@ namespace Accounting.Models
             get { return _Color; }
             set { _Color = value; }
         }
+
+        public virtual string FullName =>
+            (_FirstName.HasValue() ? $"{_FirstName} " : "") +
+            (_MiddleName.HasValue() ? $"{_MiddleName} " : "") +
+            (_LastName.HasValue() ? _LastName : "");
 
         public override void DoSpecialLoad()
         {

@@ -19,8 +19,8 @@ namespace Accounting.Mappings
             Map(m => m.ProvincialTax).Nullable();
             Map(m => m.CPP).Nullable();
             Map(m => m.EI).Nullable();
-            Map(m => m.Account);
-            Map(m => m.IncomeType);
+            References(m => m.Account);
+            References(m => m.IncomeType);
         }
 
     }

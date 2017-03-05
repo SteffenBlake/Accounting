@@ -20,8 +20,8 @@ namespace Accounting.Models
     }
 
     public class VMAccountType : VMTypeBase {
-        private List<VMAccount> _Accounts;
-        public List<VMAccount> Accounts {
+        private IList<VMAccount> _Accounts;
+        public virtual IList<VMAccount> Accounts {
             get
             {
                 return _Accounts;
@@ -39,8 +39,8 @@ namespace Accounting.Models
     }
 
     public class VMPlaceType : VMTypeBase {
-        private List<VMInvoice> _Invoices;
-        public List<VMInvoice> Invoices
+        private IList<VMInvoice> _Invoices;
+        public virtual IList<VMInvoice> Invoices
         {
             get
             {
@@ -59,8 +59,8 @@ namespace Accounting.Models
     }
 
     public class VMCostType : VMTypeBase {
-        private List<VMInvoiceEntry> _Entries;
-        public List<VMInvoiceEntry> Entries
+        private IList<VMInvoiceEntry> _Entries;
+        public virtual IList<VMInvoiceEntry> Entries
         {
             get
             {
@@ -79,8 +79,8 @@ namespace Accounting.Models
     }
 
     public class VMIncomeType : VMTypeBase {
-        private List<VMIncome> _Incomes;
-        public List<VMIncome> Incomes
+        private IList<VMIncome> _Incomes;
+        public virtual IList<VMIncome> Incomes
         {
             get
             {
@@ -107,8 +107,8 @@ namespace Accounting.Models
             set { _Rate = value; }
         }
 
-        private List<VMInvoice> _Invoices;
-        public List<VMInvoice> Invoices
+        private IList<VMInvoice> _Invoices;
+        public virtual IList<VMInvoice> Invoices
         {
             get
             {

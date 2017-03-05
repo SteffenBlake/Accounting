@@ -7,6 +7,7 @@ namespace Accounting.Mappings
 {
     public static class Hook
     {
+
         public static ISession OpenSession()
         {
             var factory = Fluently.Configure().Database(
@@ -29,7 +30,7 @@ namespace Accounting.Mappings
                     map.FluentMappings.AddFromAssemblyOf<TransferMap>();
                 })
 
-                .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(false, false))
+                .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, false))
                 .BuildSessionFactory();
 
             return factory.OpenSession();

@@ -14,7 +14,7 @@ namespace Accounting.Mappings
             Table("dbo.AccountType");
             Id(m => m.Id, "Id");
             Map(m => m.Name);
-            HasMany(m => m.Accounts).Inverse();
+            HasMany(m => m.Accounts).Inverse().Not.LazyLoad();
         }
     }
 
@@ -25,7 +25,7 @@ namespace Accounting.Mappings
             Table("dbo.PlaceType");
             Id(m => m.Id, "Id");
             Map(m => m.Name);
-            HasMany(m => m.Invoices).Inverse();
+            HasMany(m => m.Invoices).Inverse().Not.LazyLoad();
         }
     }
 
@@ -36,7 +36,7 @@ namespace Accounting.Mappings
             Table("dbo.CostType");
             Id(m => m.Id, "Id");
             Map(m => m.Name);
-            HasMany(m => m.Entries).Inverse();
+            HasMany(m => m.Entries).Inverse().Not.LazyLoad();
         }
     }
 
@@ -47,7 +47,7 @@ namespace Accounting.Mappings
             Table("dbo.IncomeType");
             Id(m => m.Id, "Id");
             Map(m => m.Name);
-            HasMany(m => m.Incomes).Inverse();
+            HasMany(m => m.Incomes).Inverse().Not.LazyLoad();
         }
     }
 
@@ -59,7 +59,7 @@ namespace Accounting.Mappings
             Id(m => m.Id, "Id");
             Map(m => m.Name);
             Map(m => m.Rate);
-            HasMany(m => m.Invoices).Inverse();
+            HasMany(m => m.Invoices).Inverse().Not.LazyLoad();
         }
     }
 }
