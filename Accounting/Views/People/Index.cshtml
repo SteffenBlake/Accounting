@@ -1,0 +1,15 @@
+﻿@using Accounting.Models
+
+@{
+    ViewBag.Title = "People";
+}
+
+@Html.ActionLink("Create New...", "New");
+
+@(Html.EJ().Grid<VMPerson>("PersonGrid")
+        .Datasource((IEnumerable<VMPerson>)ViewBag.datasource)
+        .Columns(col =>
+        {
+            col.Field(m => string.Format("{0} {1}", m.FirstName, m.LastName)).TextAlign(TextAlign.Center).Add();
+        })
+    )

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounting - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/ej/web/bootstrap-theme/ej.web.all.min.css")
+</head>
+<body>
+        @(Html.EJ().Menu("MainMenu").Items(items =>
+    {
+
+        items.Add().Id("Home").Text("Home").Url("http://localhost:49642/#");
+
+        items.Add().Id("Income").Text("Income").Url("#").Children(child =>
+        {
+            child.Add().Id("ViewIncome").Text("View").Url("http://localhost:49642/Income");
+            child.Add().Id("IncomeReports").Text("Reports").Url("http://localhost:49642/Reporting/Income");
+            child.Add().Id("IncomeType").Text("Income Types").Url("http://localhost:49642/Income/Types");
+        });
+
+        items.Add().Id("Invoice").Text("Invoice").Url("#").Children(child =>
+        {
+            child.Add().Id("ViewInvoices").Text("View").Url("http://localhost:49642/Invoice");
+            child.Add().Id("InvoiceReports").Text("Reports").Url("http://localhost:49642/Reporting/Invoice");
+            child.Add().Id("TaxType").Text("Tax Types").Url("http://localhost:49642/Taxes");
+            child.Add().Id("PlaceType").Text("Place Types").Url("http://localhost:49642/Places");
+            child.Add().Id("CostType").Text("Cost Types").Url("http://localhost:49642/Costs");
+
+
+        });
+
+        items.Add().Id("Accounts").Text("Accounts").Url("#").Children(child =>
+        {
+            child.Add().Id("ViewAccounts").Text("View").Url("http://localhost:49642/Accounts");
+            child.Add().Id("Transfers").Text("Transfer").Url("http://localhost:49642/Transfers");
+            child.Add().Id("People").Text("People").Url("http://localhost:49642/People");
+            child.Add().Id("AccountTypes").Text("Account Types").Url("http://localhost:49642/Accounts/Types");
+        });
+    }))
+
+    <H1>Accounting - @ViewBag.Title</H1>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jsrender.min.js")
+    @Scripts.Render("~/Scripts/ej/web/ej.web.all.min.js")
+    @RenderSection("scripts", required: false)
+    @Html.EJ().ScriptManager()
+</body>
+</html>
+
