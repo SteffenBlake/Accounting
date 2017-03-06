@@ -1,15 +1,17 @@
 ﻿@using Accounting.Models
 
-@{
-    ViewBag.Title = "People";
-}
-
-@Html.ActionLink("Create New Person", "New")
+@Html.ActionLink($"Create New {VMPerson.SingleName}", "New")
 
 @(Html.EJ().Grid<VMPerson>("PersonGrid")
         .Datasource((IEnumerable<VMPerson>)ViewBag.datasource)
         .Columns(col =>
         {
             col.Field(m => m.FullName).TextAlign(TextAlign.Center).Add();
+            col.HeaderText("Accounts").TextAlign(TextAlign.Center).Template("#ViewAccounts").Add();
+            col.HeaderText("Actions").TextAlign(TextAlign.Center).Template("#EDButtons").Add();
         })
     )
+
+<script type="text/x=jsrender" id="ViewAccounts">
+    <a class="btn-success" href="/Accounts/ByPerson?personId={{:Id}}">View Accounts</a>
+</script>

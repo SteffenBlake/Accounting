@@ -9,6 +9,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using Accounting.Mappings;
+using Microsoft​.ApplicationInsights​.Extensibility​.Implementation;
 
 namespace Accounting
 {
@@ -17,6 +18,7 @@ namespace Accounting
 
         protected void Application_Start()
         {
+            TelemetryDebugWriter.IsTracingDisabled = true;
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

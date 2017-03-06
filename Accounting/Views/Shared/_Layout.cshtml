@@ -9,37 +9,42 @@
     @Styles.Render("~/Content/ej/web/bootstrap-theme/ej.web.all.min.css")
 </head>
 <body>
-        @(Html.EJ().Menu("MainMenu").Items(items =>
-    {
+        @{var menu = Html.EJ().Menu("MainMenu").Items(items =>
+            {
 
-        items.Add().Id("Home").Text("Home").Url("http://localhost:49642/#");
+                items.Add().Id("Home").Text("Home").Url("http://localhost:49642/#");
 
-        items.Add().Id("Income").Text("Income").Url("#").Children(child =>
-        {
-            child.Add().Id("ViewIncome").Text("View").Url("http://localhost:49642/Income");
-            child.Add().Id("IncomeReports").Text("Reports").Url("http://localhost:49642/Reporting/Income");
-            child.Add().Id("IncomeType").Text("Income Types").Url("http://localhost:49642/Income/Types");
-        });
+                items.Add().Id("Incomes").Text("Incomes").Url("http://localhost:49642/Income").Children(child =>
+                {
+                    child.Add().Id("NewIncome").Text("New...").Url("http://localhost:49642/Income/New");
+                    child.Add().Id("IncomeReports").Text("Reports").Url("http://localhost:49642/Reporting/Income");
+                    child.Add().Id("IncomeType").Text("Income Types").Url("http://localhost:49642/IncomeTypes");
+                });
 
-        items.Add().Id("Invoice").Text("Invoice").Url("#").Children(child =>
-        {
-            child.Add().Id("ViewInvoices").Text("View").Url("http://localhost:49642/Invoice");
-            child.Add().Id("InvoiceReports").Text("Reports").Url("http://localhost:49642/Reporting/Invoice");
-            child.Add().Id("TaxType").Text("Tax Types").Url("http://localhost:49642/Taxes");
-            child.Add().Id("PlaceType").Text("Place Types").Url("http://localhost:49642/Places");
-            child.Add().Id("CostType").Text("Cost Types").Url("http://localhost:49642/Costs");
+                items.Add().Id("Invoices").Text("Invoices").Url("http://localhost:49642/Invoice").Children(child =>
+                {
+                    child.Add().Id("NewInvoice").Text("New...").Url("http://localhost:49642/Invoice/New");
+                    child.Add().Id("InvoiceReports").Text("Reports").Url("http://localhost:49642/Reporting/Invoice");
+                    child.Add().Id("TaxType").Text("Taxes").Url("http://localhost:49642/TaxTypes");
+                    child.Add().Id("PlaceType").Text("Places").Url("http://localhost:49642/PlaceTypes");
+                    child.Add().Id("CostType").Text("Costs").Url("http://localhost:49642/CostTypes");
 
 
-        });
+                });
 
-        items.Add().Id("Accounts").Text("Accounts").Url("#").Children(child =>
-        {
-            child.Add().Id("ViewAccounts").Text("View").Url("http://localhost:49642/Accounts");
-            child.Add().Id("Transfers").Text("Transfer").Url("http://localhost:49642/Transfers");
-            child.Add().Id("People").Text("People").Url("http://localhost:49642/People");
-            child.Add().Id("AccountTypes").Text("Account Types").Url("http://localhost:49642/Accounts/Types");
-        });
-    }))
+                items.Add().Id("Accounts").Text("Accounts").Url("http://localhost:49642/Accounts").Children(child =>
+                {
+                    child.Add().Id("Transfers").Text("Transfer").Url("http://localhost:49642/Transfers");
+                    child.Add().Id("People").Text("People").Url("http://localhost:49642/People");
+                    child.Add().Id("AccountTypes").Text("Account Types").Url("http://localhost:49642/AccountTypes");
+                });
+            });
+    }
+
+    @menu
+
+
+
 
     <H1>Accounting - @ViewBag.Title</H1>
     <div class="container body-content">
@@ -59,3 +64,7 @@
 </body>
 </html>
 
+<script type="text/x=jsrender" id="EDButtons">
+    <a class="btn-success" href="/{{:LinkName}}/Edit?id={{:Id}}">Edit</a>
+    <a class="btn-danger" href="/{{:LinkName}}/Delete?id={{:Id}}">Delete</a>
+</script>

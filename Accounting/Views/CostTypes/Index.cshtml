@@ -1,0 +1,12 @@
+﻿@using Accounting.Models
+
+@Html.ActionLink($"Create New {VMCostType.SingleName}", "New")
+
+@(Html.EJ().Grid<VMCostType>("CostTypeGrid")
+        .Datasource((IEnumerable<VMCostType>)ViewBag.datasource)
+        .Columns(col =>
+        {
+            col.Field(m => m.Name).TextAlign(TextAlign.Center).Add();
+            col.HeaderText("Actions").TextAlign(TextAlign.Center).Template("#EDButtons").Add();
+        })
+)

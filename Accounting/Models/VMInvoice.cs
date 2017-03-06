@@ -5,6 +5,11 @@ namespace Accounting.Models
 {
     public class VMInvoice : VMBase
     {
+        public static readonly string SingleName = "Invoice";
+        public static readonly string PluralName = "Invoices";
+
+        public virtual string LinkName => PluralName;
+
         private IList<VMInvoiceEntry> _Entries;
         public virtual IList<VMInvoiceEntry> Entries
         {

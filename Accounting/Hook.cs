@@ -30,7 +30,7 @@ namespace Accounting.Mappings
                     map.FluentMappings.AddFromAssemblyOf<TransferMap>();
                 })
 
-                .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, false))
+                .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true))
                 .BuildSessionFactory();
 
             return factory.OpenSession();

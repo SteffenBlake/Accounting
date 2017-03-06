@@ -3,8 +3,9 @@
 
 @using (Html.BeginForm("Edit", "People", FormMethod.Post))
 {
-
-    @Html.HiddenFor(m => m.Accounts);
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Accounts)
+    
 
     <div>
         @Html.LabelFor(m => m.FirstName)

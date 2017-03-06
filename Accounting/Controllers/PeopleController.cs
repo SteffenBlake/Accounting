@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Accounting.Models;
-using Accounting;
 using Accounting.Mappings;
 using NHibernate;
 
@@ -14,35 +12,33 @@ namespace Accounting.Controllers
     {
         public ActionResult Index()
         {
-            var People = new List<VMPerson>();
+            var vmList = new List<VMPerson>();
 
             using (ISession session = Hook.OpenSession())
             {
-                People.AddRange(session.QueryOver<VMPerson>().List());
+                vmList.AddRange(session.QueryOver<VMPerson>().List());
 
-            ViewBag.datasource = People.AsEnumerable();
-            ViewBag.Title = "People";
+            ViewBag.datasource = vmList.AsEnumerable();
+            ViewBag.Title = VMPerson.PluralName;
             return View();
             }
         }
 
         public ActionResult New()
         {
-            ViewBag.datasource = new VMPerson();
-            ViewBag.Title = "New Person";
-            return View("Edit");
+            ViewBag.Title = $"New {VMPerson.SingleName}";
+            return View("Edit", new VMPerson());
         }
 
         public ActionResult Edit(int id)
         {
+            VMPerson vm;
             using (ISession session = Hook.OpenSession())
             {
-                var vm = session.Get<VMPerson>(id);
-                ViewBag.datasource = vm;
-                ViewBag.Title = $"Edit: {vm.FullName}";
+                vm = session.Get<VMPerson>(id);
+                ViewBag.Title = $"Edit {VMPerson.SingleName}: {vm.FirstName}";
             }
-
-            return View();
+                return View("Edit", vm);
         }
 
         [HttpPost]

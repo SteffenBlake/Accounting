@@ -15,6 +15,8 @@ namespace Accounting.Mappings
             Table("dbo.Account");
             Id(m => m.Id);
             Map(m => m.Name);
+            Map(m => m.OpeningBalance);
+            Map(m => m.CreationDate);
             References(m => m.Person);
             References(m => m.AccountType);
             HasMany(m => m.Incomes).Inverse().Not.LazyLoad();

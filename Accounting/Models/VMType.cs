@@ -4,6 +4,7 @@ namespace Accounting.Models
 {
     public class VMTypeBase : VMBase
     {
+
         private string _Name;
         public virtual string Name        {
             get { return _Name; }
@@ -20,6 +21,11 @@ namespace Accounting.Models
     }
 
     public class VMAccountType : VMTypeBase {
+        public static readonly string SingleName = "Account Type";
+        public static readonly string PluralName = "Account Types";
+
+        public virtual string LinkName => "AccountTypes";
+
         private IList<VMAccount> _Accounts;
         public virtual IList<VMAccount> Accounts {
             get
@@ -39,6 +45,11 @@ namespace Accounting.Models
     }
 
     public class VMPlaceType : VMTypeBase {
+        public static readonly string SingleName = "Place";
+        public static readonly string PluralName = "Places";
+
+        public virtual string LinkName => "PlaceTypes";
+
         private IList<VMInvoice> _Invoices;
         public virtual IList<VMInvoice> Invoices
         {
@@ -59,6 +70,11 @@ namespace Accounting.Models
     }
 
     public class VMCostType : VMTypeBase {
+        public static readonly string SingleName = "Cost Type";
+        public static readonly string PluralName = "Cost Types";
+
+        public virtual string LinkName => "CostTypes";
+
         private IList<VMInvoiceEntry> _Entries;
         public virtual IList<VMInvoiceEntry> Entries
         {
@@ -79,6 +95,11 @@ namespace Accounting.Models
     }
 
     public class VMIncomeType : VMTypeBase {
+        public static readonly string SingleName = "Income Type";
+        public static readonly string PluralName = "Income Types";
+
+        public virtual string LinkName => "IncomeTypes";
+
         private IList<VMIncome> _Incomes;
         public virtual IList<VMIncome> Incomes
         {
@@ -100,6 +121,10 @@ namespace Accounting.Models
 
     public class VMTaxType : VMTypeBase
     {
+        public static readonly string SingleName = "Tax";
+        public static readonly string PluralName = "Taxes";
+
+        public virtual string LinkName => "TaxTypes";
 
         private decimal _Rate;
         public virtual decimal Rate        {

@@ -11,10 +11,8 @@ namespace Accounting.Models
         public virtual int Id
         {
             get { return _Id; }
-            protected set { _Id = value; }
+            set { _Id = value; }
         }
-
-        public virtual bool IsNew => Id == 0;
 
         public VMBase()
         {

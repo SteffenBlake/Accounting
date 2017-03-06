@@ -2,6 +2,11 @@
 {
     public class VMInvoiceEntry : VMBase
     {
+        public static readonly string SingleName = "Entry";
+        public static readonly string PluralName = "Entries";
+
+        public virtual string LinkName => "Costs";
+
         private VMInvoice _Invoice;
         public virtual VMInvoice Invoice
         {

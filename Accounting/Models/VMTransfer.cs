@@ -4,6 +4,11 @@ namespace Accounting.Models
 {
     public class VMTransfer : VMBase
     {
+        public static readonly string SingleName = "Transfer";
+        public static readonly string PluralName = "Transfers";
+
+        public virtual string LinkName => PluralName;
+
         private VMAccount _FromAccount;
         public virtual VMAccount FromAccount
         {

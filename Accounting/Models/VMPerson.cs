@@ -4,6 +4,11 @@ namespace Accounting.Models
 {
     public class VMPerson : VMBase
     {
+        public static readonly string SingleName = "Person";
+        public static readonly string PluralName = "People";
+
+        public virtual string LinkName => PluralName;
+
         private IList<VMAccount> _Accounts;
         public virtual IList<VMAccount> Accounts
         {

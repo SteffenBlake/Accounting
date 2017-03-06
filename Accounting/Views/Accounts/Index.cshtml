@@ -1,3 +1,13 @@
-﻿@{
-    ViewBag.Title = "Accounts";
-}
+﻿@using Accounting.Models
+
+@(Html.EJ().Grid<VMAccount>("AccountGrid")
+        .Datasource((IEnumerable<VMAccount>)ViewBag.datasource)
+        .Columns(col =>
+        {
+            col.Field(m => m.Name).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Type).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Owner).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Balance).TextAlign(TextAlign.Center).Format("{0:C}").Add();
+            col.HeaderText("Actions").TextAlign(TextAlign.Center).Template("#EDButtons").Add();
+        })
+)

@@ -1,0 +1,13 @@
+﻿@using Accounting.Models
+
+@Html.ActionLink($"Create New {VMTaxType.SingleName}", "New")
+
+@(Html.EJ().Grid<VMTaxType>("TaxTypeGrid")
+        .Datasource((IEnumerable<VMTaxType>)ViewBag.datasource)
+        .Columns(col =>
+        {
+            col.Field(m => m.Name).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Rate).Format("{0:P}").Add();
+            col.HeaderText("Actions").TextAlign(TextAlign.Center).Template("#EDButtons").Add();
+        })
+)

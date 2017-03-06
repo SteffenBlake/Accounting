@@ -1,0 +1,13 @@
+﻿@using Accounting.Models
+@model VMAccountType
+
+@using (Html.BeginForm("Edit", "AccountTypes", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Accounts)
+
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+
+    <input type="submit" name="SaveButton" value="Save">
+}

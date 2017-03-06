@@ -1,0 +1,16 @@
+﻿@using Accounting.Models
+@model VMTaxType
+
+@using (Html.BeginForm("Edit", "TaxTypes", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Invoices)
+
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+
+    @Html.LabelFor(m => m.Rate)
+    @Html.EditorFor(m => m.Rate)
+
+    <input type="submit" name="SaveButton" value="Save">
+}

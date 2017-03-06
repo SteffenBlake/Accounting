@@ -188,13 +188,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CostTypesController.cs" />
+    <Compile Include="Controllers\PlaceTypesController.cs" />
+    <Compile Include="Controllers\TaxTypesController.cs" />
+    <Compile Include="Controllers\IncomeTypesController.cs" />
+    <Compile Include="Controllers\AccountTypesController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\IncomeController.cs" />
     <Compile Include="Controllers\CostsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\TransfersController.cs" />
-    <Compile Include="Controllers\TaxesController.cs" />
-    <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ReportingController.cs" />
@@ -758,22 +761,34 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Income\Index.cshtml" />
-    <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Invoice\Index.cshtml" />
     <Content Include="Views\Reporting\Invoice.cshtml" />
     <Content Include="Views\Reporting\Income.cshtml" />
-    <Content Include="Views\Taxes\Index.cshtml" />
-    <Content Include="Views\Places\Index.cshtml" />
-    <Content Include="Views\Costs\Index.cshtml" />
-    <Content Include="Views\Accounts\Index.cshtml" />
-    <Content Include="Views\Transfers\Index.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
-    <Content Include="Views\Accounts\Types.cshtml" />
-    <Content Include="Views\Income\Types.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\People\Edit.cshtml" />
+    <Content Include="Views\AccountTypes\Index.cshtml" />
+    <Content Include="Views\AccountTypes\Edit.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Accounts\Index.cshtml" />
+    <Content Include="Views\Costs\Edit.cshtml" />
+    <Content Include="Views\Costs\Index.cshtml" />
+    <Content Include="Views\Income\Edit.cshtml" />
+    <Content Include="Views\Income\Index.cshtml" />
+    <Content Include="Views\Index\Edit.cshtml" />
+    <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Invoice\Edit.cshtml" />
+    <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Transfers\Edit.cshtml" />
+    <Content Include="Views\Transfers\Index.cshtml" />
+    <Content Include="Views\PlaceTypes\Edit.cshtml" />
+    <Content Include="Views\PlaceTypes\Index.cshtml" />
+    <Content Include="Views\CostTypes\Edit.cshtml" />
+    <Content Include="Views\CostTypes\Index.cshtml" />
+    <Content Include="Views\IncomeTypes\Edit.cshtml" />
+    <Content Include="Views\IncomeTypes\Index.cshtml" />
+    <Content Include="Views\TaxTypes\Edit.cshtml" />
+    <Content Include="Views\TaxTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
