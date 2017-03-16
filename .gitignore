@@ -3,3 +3,7 @@ Accounting/obj/
 packages/
 Database/
 .vs/
+bin/
+Content/
+obj/
+Scripts/

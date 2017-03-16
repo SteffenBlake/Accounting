@@ -1,0 +1,18 @@
+﻿@using Accounting.Models
+
+@Html.ActionLink($"Create New {VMTransfer.SingleName}", "New")
+
+@(Html.EJ().Grid<VMTransfer>("TransferGrid")
+        .Datasource((IEnumerable<VMTransfer>)ViewBag.datasource)
+        .Columns(col =>
+        {
+            col.Field(m => m.FromAccount).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.ToAccount).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Date).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Amount).TextAlign(TextAlign.Center).Add();
+            col.HeaderText("Actions").TextAlign(TextAlign.Center).Template("#EDButtons").Add();
+        })
+        .AllowSorting()
+        .AllowMultiSorting()
+        .AllowPaging()
+)

@@ -1,0 +1,52 @@
+﻿@using Accounting.Models
+@model VMAccount
+
+@using (Html.BeginForm("Edit", "Accounts", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Incomes)
+    @Html.HiddenFor(m => m.Invoices)
+    @Html.HiddenFor(m => m.InTransfers)
+    @Html.HiddenFor(m => m.OutTransfers)
+    @Html.HiddenFor(m => m.CreationDate)
+
+    <div class="display-density">
+        @Html.LabelFor(m => m.Name)
+        @Html.EditorFor(m => m.Name)
+    </div>
+
+    <div class="display-density">
+        @Html.LabelFor(m => m.OpeningBalance)
+        @(Html.EJ().NumericTextBoxFor(m => m.OpeningBalance)
+        .DecimalPlaces(2)
+        .ShowSpinButton(false)
+        .WatermarkText("Select Opening Balance")
+        .Enabled(Model.Id == 0))
+    </div>
+
+    <div class="display-density">
+        @Html.ActionLink($"Create New {VMAccountType.SingleName}", "New", "AccountTypes", null, new {target="_blank" })
+        <br />
+        @Html.Label("Account Type")
+        @(Html.EJ().DropDownListFor(m => m.TypeId)
+        .Datasource((IEnumerable<VMAccountType>)ViewBag.AccountTypes)
+        .DropDownListFields(f => f.ID("Id").Text("Name").Value("Id"))
+        .WatermarkText("Select a Type")
+        )
+    </div>
+
+    <div class="display-density">
+        @Html.ActionLink($"Create New {VMPerson.SingleName}", "New", "People", null, new { target = "_blank" })
+        <br />
+        @Html.Label("Owner")
+        @(Html.EJ().DropDownListFor(m => m.OwnerId)
+        .Datasource((IEnumerable<VMPerson>)ViewBag.People)
+        .DropDownListFields(f => f.ID("Id").Text("FullName").Value("Id"))
+        .WatermarkText("Select a Person")
+        )
+    </div>
+
+    <div class="display-density">
+        <input type="submit" name="SaveButton" value="Save">
+    </div>
+}

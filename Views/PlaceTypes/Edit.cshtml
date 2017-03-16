@@ -1,0 +1,13 @@
+﻿@using Accounting.Models
+@model VMPlaceType
+
+@using (Html.BeginForm("Edit", "PlaceTypes", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Invoices)
+
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+
+    <input type="submit" name="SaveButton" value="Save">
+}

@@ -1,0 +1,48 @@
+﻿@using Accounting.Models
+@model VMTransfer
+
+@using (Html.BeginForm("Edit", "Transfer", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="row">
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.Amount)
+            @(Html.EJ().NumericTextBoxFor(m => m.Amount)
+        .DecimalPlaces(2)
+        .ShowSpinButton(false)
+        .WatermarkText("Select Amount")
+            )
+        </div>
+
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.Date)
+            @(Html.EJ().DatePickerFor(m => m.Date)
+            )
+        </div>
+    </div>
+        <br />
+        @Html.ActionLink($"Create New {VMAccount.SingleName}", "New", "Accounts", null, new { target = "_blank" })
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("From Account:")
+                @(Html.EJ().DropDownListFor(m => m.FromAccountId)
+        .Datasource((IEnumerable<VMAccount>)ViewBag.AccountList)
+        .DropDownListFields(f => f.ID("Id").Text("FullName").Value("Id"))
+        .WatermarkText("Select an Account")
+                )
+            </div>
+
+            <div class="col-sm-6">
+                @Html.Label("To Account:")
+                @(Html.EJ().DropDownListFor(m => m.ToAccountId)
+        .Datasource((IEnumerable<VMAccount>)ViewBag.AccountList)
+        .DropDownListFields(f => f.ID("Id").Text("FullName").Value("Id"))
+        .WatermarkText("Select an Account")
+                )
+            </div>
+        </div>
+
+        <input type="submit" name="SaveButton" value="Save">
+}

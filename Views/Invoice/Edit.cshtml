@@ -1,0 +1,10 @@
+﻿@using Accounting.Models
+@model VMInvoice
+
+@using (Html.BeginForm("Edit", "Invoice", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+
+    <input type="submit" name="SaveButton" value="Save">
+}
