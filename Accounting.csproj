@@ -214,6 +214,7 @@
     <Compile Include="Mappings\PersonMap.cs" />
     <Compile Include="Mappings\TypeMaps.cs" />
     <Compile Include="Models\VMAccount.cs" />
+    <Compile Include="Models\VMTransactionBase.cs" />
     <Compile Include="Models\VMBase.cs" />
     <Compile Include="Models\VMIncome.cs" />
     <Compile Include="Models\VMInvoice.cs" />

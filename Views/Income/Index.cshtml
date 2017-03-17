@@ -1,1 +1,16 @@
 ﻿@using Accounting.Models
+
+@Html.ActionLink($"Create New {VMIncome.SingleName}", "New")
+
+@(Html.EJ().Grid<VMIncome>("AccountGrid")
+        .Datasource((IEnumerable<VMIncome>)ViewBag.datasource)
+        .Columns(col =>
+        {
+            col.Field(m => m.AccountName).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.OwnerName).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Date).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Total).TextAlign(TextAlign.Center).Format("{0:C}").Add();
+            col.Field(m => m.Net).TextAlign(TextAlign.Center).Format("{0:C}").Add();
+            col.HeaderText("Actions").TextAlign(TextAlign.Center).Template("#EDButtons").Add();
+        })
+)

@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Models
 {
-    public class VMInvoiceEntry : VMBase
+    public class VMInvoiceEntry : VMTransactionBase
     {
         public static readonly string SingleName = "Entry";
         public static readonly string PluralName = "Entries";

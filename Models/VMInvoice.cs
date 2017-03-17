@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Accounting.Models
 {
-    public class VMInvoice : VMBase
+    public class VMInvoice : VMTransactionBase
     {
         public static readonly string SingleName = "Invoice";
         public static readonly string PluralName = "Invoices";
@@ -45,11 +46,22 @@ namespace Accounting.Models
             set { _Date = value; }
         }
 
-        public override void DoSpecialLoad()
+        public override void DoSpecialTransactionLoad()
         {
             _Entries = new List<VMInvoiceEntry>();
 
             _Date = DateTime.Now;
+        }
+
+        public override bool Validate()
+        {
+
+            return
+                _Entries.Count > 0 &&
+                 Entries.All(e => e.IsValid) &&
+                 _TaxType != null &&
+                 _PlaceType != null &&
+                 _Account != null;
         }
 
         public virtual void SetAccount(VMAccount account)

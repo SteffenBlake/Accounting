@@ -3,7 +3,7 @@ using System.Web.Script.Serialization;
 
 namespace Accounting.Models
 {
-    public class VMTransfer : VMBase
+    public class VMTransfer : VMTransactionBase
     {
         public static readonly string SingleName = "Transfer";
         public static readonly string PluralName = "Transfers";
@@ -42,11 +42,20 @@ namespace Accounting.Models
             set { _Amount = value; }
         }
 
-        public override void DoSpecialLoad()
+        public override void DoSpecialTransactionLoad()
         {
             _Date = DateTime.Now;
             _Amount = 0m;
         }
+
+        public override bool Validate()
+        {
+            return 
+                _Amount > 0m &&
+                _FromAccount != null &&
+                _ToAccount != null;
+        }
+
 
         public virtual void SetAccounts(VMAccount fromAccount, VMAccount toAccount)
         {

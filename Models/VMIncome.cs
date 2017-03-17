@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Web.Script.Serialization;
 
 namespace Accounting.Models
 {
-    public class VMIncome : VMBase
+    public class VMIncome : VMTransactionBase
     {
         public static readonly string SingleName = "Income";
         public static readonly string PluralName = "Incomes";
@@ -52,6 +53,7 @@ namespace Accounting.Models
         }
 
         private VMAccount _Account;
+        [ScriptIgnore]
         public virtual VMAccount Account
         {
             get { return _Account; }
@@ -59,16 +61,32 @@ namespace Accounting.Models
         }
 
         private VMIncomeType _IncomeType;
+        [ScriptIgnore]
         public virtual VMIncomeType IncomeType
         {
             get { return _IncomeType; }
             set { _IncomeType = value; }
         }
+        public virtual int IncomeTypeId { get; set; }
 
-        public override void DoSpecialLoad()
+        public virtual string AccountName => _Account != null ? _Account.Name : "";
+
+        public virtual string OwnerName => _Account != null && _Account.Person != null ? _Account.Person.FullName : "";
+
+        public virtual decimal Net => _Total - (_FederalTax ?? 0m) - (_ProvincialTax ?? 0m) - (_CPP ?? 0m) - (EI ?? 0m);
+
+        public override void DoSpecialTransactionLoad()
         {
             Date = DateTime.Now;
             Total = 0m;
+        }
+
+        public override bool Validate()
+        {
+            return
+                _Total > 0m &&
+                _Account != null &&
+                _IncomeType != null;
         }
 
         public virtual void SetType(VMIncomeType incomeType)
