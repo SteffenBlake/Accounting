@@ -18,9 +18,9 @@ namespace Accounting.Controllers
             {
                 vmList.AddRange(session.QueryOver<VMPerson>().List());
 
-            ViewBag.datasource = vmList.AsEnumerable();
-            ViewBag.Title = VMPerson.PluralName;
-            return View();
+                ViewBag.datasource = vmList.AsEnumerable();
+                ViewBag.Title = VMPerson.PluralName;
+                return View();
             }
         }
 
@@ -38,7 +38,7 @@ namespace Accounting.Controllers
                 vm = session.Get<VMPerson>(id);
                 ViewBag.Title = $"Edit {VMPerson.SingleName}: {vm.FirstName}";
             }
-                return View("Edit", vm);
+            return View("Edit", vm);
         }
 
         [HttpPost]
@@ -56,6 +56,7 @@ namespace Accounting.Controllers
                     catch (Exception e)
                     {
                         transaction.Rollback();
+                        ViewBag.Error = e.Message;
                         return View();
                     }
                 }
@@ -80,6 +81,7 @@ namespace Accounting.Controllers
             }
             catch (Exception e)
             {
+                ViewBag.Error = e.Message;
                 return RedirectToAction("Index");
             }
         }

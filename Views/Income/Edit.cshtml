@@ -4,7 +4,95 @@
 @using (Html.BeginForm("Edit", "Income", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.IsPosted)
 
+    <br />
 
-    <input type="submit" name="SaveButton" value="Save">
+    <div class="row">
+        <div class="col-sm-6">
+            @Html.ActionLink($"Create New {VMAccount.SingleName}", "New", "Accounts", null, new { target = "_blank" })
+            <br/>
+            @Html.Label("Income Account:")
+            @(Html.EJ().DropDownListFor(m => m.AccountId)
+        .Datasource((IEnumerable<VMAccount>)ViewBag.AccountList)
+        .DropDownListFields(f => f.ID("Id").Text("FullName").Value("Id"))
+        .WatermarkText("Select an Account")
+            )
+        </div>
+
+        <div class="col-sm-6">
+            @Html.ActionLink($"Create New {VMIncomeType.SingleName}", "New", "IncomeTypes", null, new { target = "_blank" })
+            <br />
+            @Html.Label("Income Type:")
+            @(Html.EJ().DropDownListFor(m => m.IncomeTypeId)
+        .Datasource((IEnumerable<VMIncomeType>)ViewBag.TypeList)
+        .DropDownListFields(f => f.ID("Id").Text("Name").Value("Id"))
+        .WatermarkText("Select a Type")
+            )
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.Date)
+            @(Html.EJ().DatePickerFor(m => m.Date)
+            )
+        </div>
+
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.Total)
+            @(Html.EJ().CurrencyTextBoxFor(m => m.Total)
+        .DecimalPlaces(2)
+        .MinValue(0)
+        .ShowSpinButton(false)
+        .WatermarkText("Enter Total ($)")
+            )
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.FederalTax)
+            @(Html.EJ().CurrencyTextBoxFor(m => m.FederalTax)
+        .DecimalPlaces(2)
+        .MinValue(0)
+        .ShowSpinButton(false)
+        .WatermarkText("Enter Federal Tax ($)")
+            )
+        </div>
+
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.ProvincialTax)
+            @(Html.EJ().CurrencyTextBoxFor(m => m.ProvincialTax)
+        .DecimalPlaces(2)
+        .MinValue(0)
+        .ShowSpinButton(false)
+        .WatermarkText("Enter Provincial Tax ($)")
+            )
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.CPP)
+            @(Html.EJ().CurrencyTextBoxFor(m => m.CPP)
+        .DecimalPlaces(2)
+        .MinValue(0)
+        .ShowSpinButton(false)
+        .WatermarkText("Enter CPP ($)")
+            )
+        </div>
+
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.EI)
+            @(Html.EJ().CurrencyTextBoxFor(m => m.EI)
+        .DecimalPlaces(2)
+        .MinValue(0)
+        .ShowSpinButton(false)
+        .WatermarkText("Enter EI ($)")
+            )
+        </div>
+    </div>
+
+        <input type="submit" name="SaveButton" value="Save">
 }

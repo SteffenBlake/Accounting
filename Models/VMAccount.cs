@@ -79,6 +79,13 @@ namespace Accounting.Models
             set { _InTransfers = value; }
         }
 
+        private IList<VMAmendment> _Amendments;
+        public virtual IList<VMAmendment> Amendments
+        {
+            get { return _Amendments; }
+            set { _Amendments = value; }
+        }
+
         public virtual string Owner => _Person != null ? _Person.FullName : "";
         public virtual string FullName => _Person != null ? $"{_Person.FullName} - {Name}" : "";
         public virtual string Type => _AccountType != null ? _AccountType.Name : "";
@@ -93,6 +100,7 @@ namespace Accounting.Models
             _InTransfers = new List<VMTransfer>();
             _Incomes = new List<VMIncome>();
             _Invoices = new List<VMInvoice>();
+            _Amendments = new List<VMAmendment>();
         }
 
         public virtual void SetType(VMAccountType accountType)

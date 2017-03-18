@@ -13,6 +13,7 @@ namespace Accounting.Mappings
         {
             Table("dbo.Invoice");
             Id(m => m.Id);
+            Map(m => m.IsPosted);
             HasMany(m => m.Entries).Inverse().Not.LazyLoad();
             References(m => m.PlaceType);
             References(m => m.TaxType);

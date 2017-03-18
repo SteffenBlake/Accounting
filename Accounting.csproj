@@ -188,6 +188,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AmendmentsController.cs" />
     <Compile Include="Controllers\CostTypesController.cs" />
     <Compile Include="Controllers\PlaceTypesController.cs" />
     <Compile Include="Controllers\TaxTypesController.cs" />
@@ -206,6 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hook.cs" />
+    <Compile Include="Mappings\AmendmentMap.cs" />
     <Compile Include="Mappings\AccountMap.cs" />
     <Compile Include="Mappings\InvoiceEntryMap.cs" />
     <Compile Include="Mappings\InvoiceMap.cs" />
@@ -213,6 +215,7 @@
     <Compile Include="Mappings\TransferMap.cs" />
     <Compile Include="Mappings\PersonMap.cs" />
     <Compile Include="Mappings\TypeMaps.cs" />
+    <Compile Include="Models\VMAmendment.cs" />
     <Compile Include="Models\VMAccount.cs" />
     <Compile Include="Models\VMTransactionBase.cs" />
     <Compile Include="Models\VMBase.cs" />
@@ -790,6 +793,8 @@
     <Content Include="Views\IncomeTypes\Index.cshtml" />
     <Content Include="Views\TaxTypes\Edit.cshtml" />
     <Content Include="Views\TaxTypes\Index.cshtml" />
+    <Content Include="Views\Amendments\Edit.cshtml" />
+    <Content Include="Views\Amendments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

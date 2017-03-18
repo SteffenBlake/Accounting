@@ -13,6 +13,7 @@ namespace Accounting.Mappings
         {
             Table("dbo.InvoiceEntry");
             Id(m => m.Id);
+            Map(m => m.IsPosted);
             References(m => m.Invoice);
             References(m => m.CostType);
             Map(m => m.Name);

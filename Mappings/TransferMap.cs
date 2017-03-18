@@ -13,6 +13,7 @@ namespace Accounting.Mappings
         {
             Table("dbo.Transfer");
             Id(m => m.Id);
+            Map(m => m.IsPosted);
             References(m => m.FromAccount);
             References(m => m.ToAccount);
             Map(m => m.Amount);

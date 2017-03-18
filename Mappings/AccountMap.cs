@@ -22,6 +22,7 @@ namespace Accounting.Mappings
             HasMany(m => m.Invoices).Inverse().Not.LazyLoad();
             HasMany(m => m.InTransfers).Inverse().Not.LazyLoad();
             HasMany(m => m.OutTransfers).Inverse().Not.LazyLoad();
+            HasMany(m => m.Amendments).Inverse().Not.LazyLoad();
         }
     }
 }

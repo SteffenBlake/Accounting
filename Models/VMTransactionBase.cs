@@ -8,7 +8,7 @@ namespace Accounting.Models
     public class VMTransactionBase : VMBase    {
 
         private bool _IsPosted;
-        public bool IsPosted {
+        public virtual bool IsPosted {
             get
             {
                 return _IsPosted;

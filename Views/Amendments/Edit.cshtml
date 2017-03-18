@@ -1,0 +1,38 @@
+﻿@using Accounting.Models
+@model VMAmendment
+
+@using (Html.BeginForm("Edit", "Transfer", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="row">
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.NewAmount)
+            @(Html.EJ().CurrencyTextBoxFor(m => m.NewAmount)
+        .DecimalPlaces(2)
+        .ShowSpinButton(false)
+        .WatermarkText("Select Amount")
+            )
+        </div>
+        
+        <div class="display-density col-sm-6">
+            @Html.LabelFor(m => m.Date)
+            @(Html.EJ().DatePickerFor(m => m.Date)
+        .MinDate(Model.Min)
+            )
+        </div>
+    </div>
+    <br />
+    @Html.ActionLink($"Create New {VMAccount.SingleName}", "New", "Accounts", null, new { target = "_blank" })
+    <br />
+        <div class="col-sm-6">
+            @Html.Label("Account:")
+            @(Html.EJ().DropDownListFor(m => m.AccountId)
+        .Datasource((IEnumerable<VMAccount>)ViewBag.AccountList)
+        .DropDownListFields(f => f.ID("Id").Text("FullName").Value("Id"))
+        .WatermarkText("Select an Account")
+            )
+        </div>
+
+        <input type="submit" name="SaveButton" value="Save">
+}

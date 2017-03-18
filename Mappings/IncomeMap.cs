@@ -15,6 +15,7 @@ namespace Accounting.Mappings
             Id(m => m.Id);
             Map(m => m.Date);
             Map(m => m.Total);
+            Map(m => m.IsPosted);
             Map(m => m.FederalTax).Nullable();
             Map(m => m.ProvincialTax).Nullable();
             Map(m => m.CPP).Nullable();

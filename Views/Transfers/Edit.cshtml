@@ -8,8 +8,9 @@
     <div class="row">
         <div class="display-density col-sm-6">
             @Html.LabelFor(m => m.Amount)
-            @(Html.EJ().NumericTextBoxFor(m => m.Amount)
+            @(Html.EJ().CurrencyTextBoxFor(m => m.Amount)
         .DecimalPlaces(2)
+        .MinValue(0.01)
         .ShowSpinButton(false)
         .WatermarkText("Select Amount")
             )

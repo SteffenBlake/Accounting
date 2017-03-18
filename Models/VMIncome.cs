@@ -59,6 +59,8 @@ namespace Accounting.Models
             get { return _Account; }
             set { _Account = value; }
         }
+        public virtual int AccountId { get; set; }
+
 
         private VMIncomeType _IncomeType;
         [ScriptIgnore]

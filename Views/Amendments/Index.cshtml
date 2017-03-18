@@ -1,0 +1,17 @@
+﻿@using Accounting.Models
+
+@Html.ActionLink($"Create New {VMAmendment.SingleName}", "New")
+
+@(Html.EJ().Grid<VMAmendment>("AmendmentGrid")
+        .Datasource((IEnumerable<VMAmendment>)ViewBag.datasource)
+        .Columns(col =>
+        {
+            col.Field(m => m.AccountName).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.Date).TextAlign(TextAlign.Center).Add();
+            col.Field(m => m.NewAmount).TextAlign(TextAlign.Center).Add();
+            col.HeaderText("Actions").TextAlign(TextAlign.Center).Template("#EDButtons").Add();
+        })
+        .AllowSorting()
+        .AllowMultiSorting()
+        .AllowPaging()
+)

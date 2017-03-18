@@ -56,6 +56,7 @@ namespace Accounting.Controllers
                     catch (Exception e)
                     {
                         transaction.Rollback();
+                        ViewBag.Error = e.Message;
                         return View();
                     }
                 }
@@ -80,6 +81,7 @@ namespace Accounting.Controllers
             }
             catch (Exception e)
             {
+                ViewBag.Error = e.Message;
                 return RedirectToAction("Index");
             }
         }

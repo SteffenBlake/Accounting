@@ -141,6 +141,7 @@ namespace Accounting.Controllers
             }
             catch (Exception e)
             {
+                ViewBag.Error = e.Message;
                 return RedirectToAction("Index");
             }
         }

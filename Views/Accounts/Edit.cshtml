@@ -17,7 +17,7 @@
 
     <div class="display-density">
         @Html.LabelFor(m => m.OpeningBalance)
-        @(Html.EJ().NumericTextBoxFor(m => m.OpeningBalance)
+        @(Html.EJ().CurrencyTextBoxFor(m => m.OpeningBalance)
         .DecimalPlaces(2)
         .ShowSpinButton(false)
         .WatermarkText("Select Opening Balance")

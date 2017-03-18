@@ -28,6 +28,7 @@ namespace Accounting.Mappings
                     map.FluentMappings.AddFromAssemblyOf<InvoiceEntryMap>();
                     map.FluentMappings.AddFromAssemblyOf<PersonMap>();
                     map.FluentMappings.AddFromAssemblyOf<TransferMap>();
+                    map.FluentMappings.AddFromAssemblyOf<AmendmentMap>();
                 })
 
                 .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(false, false))

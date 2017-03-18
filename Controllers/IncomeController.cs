@@ -12,13 +12,11 @@ namespace Accounting.Controllers
     {
         public ActionResult Index()
         {
-            var Types = new List<VMIncome>();
-
             using (ISession session = Hook.OpenSession())
             {
-                Types.AddRange(session.QueryOver<VMIncome>().List());
+                var Incomes = session.QueryOver<VMIncome>().List();
 
-                ViewBag.datasource = Types.AsEnumerable();
+                ViewBag.datasource = Incomes.AsEnumerable();
                 ViewBag.Title = VMIncome.PluralName;
                 return View();
             }
@@ -26,8 +24,14 @@ namespace Accounting.Controllers
 
         public ActionResult New()
         {
-            ViewBag.Title = $"New {VMIncome.SingleName}";
-            return View("Edit", new VMIncome());
+            using (ISession session = Hook.OpenSession())
+            {
+                ViewBag.TypeList = session.QueryOver<VMIncomeType>().List();
+                ViewBag.AccountList = session.QueryOver<VMAccount>().List();
+
+                ViewBag.Title = $"New {VMIncome.SingleName}";
+                return View("Edit", new VMIncome());
+            }
         }
 
         public ActionResult Edit(int id)
@@ -36,6 +40,13 @@ namespace Accounting.Controllers
             using (ISession session = Hook.OpenSession())
             {
                 vm = session.Get<VMIncome>(id);
+
+                vm.AccountId = vm.Account.Id;
+                vm.IncomeTypeId = vm.IncomeType.Id;
+
+                var TypeList = session.QueryOver<VMIncomeType>().List();
+                var AccountList = session.QueryOver<VMAccount>().List();
+
                 ViewBag.Title = $"Edit {VMIncome.SingleName}: {vm.Account.Name}-{vm.Date.ToString()}";
             }
             return View("Edit", vm);
@@ -50,12 +61,16 @@ namespace Accounting.Controllers
                 {
                     try
                     {
+                        vm.SetType(session.Get<VMIncomeType>(vm.IncomeTypeId));
+                        vm.SetAccount(session.Get<VMAccount>(vm.AccountId));
+
                         session.SaveOrUpdate(vm);
                         transaction.Commit();
                     }
                     catch (Exception e)
                     {
                         transaction.Rollback();
+                        ViewBag.Error = e.Message;
                         return View();
                     }
                 }
@@ -65,9 +80,10 @@ namespace Accounting.Controllers
 
         public ActionResult Delete(int id)
         {
-            try
+
+            using (ISession session = Hook.OpenSession())
             {
-                using (ISession session = Hook.OpenSession())
+                try
                 {
                     var vm = session.Get<VMIncome>(id);
                     using (ITransaction transaction = session.BeginTransaction())
@@ -76,12 +92,13 @@ namespace Accounting.Controllers
                         transaction.Commit();
                     }
                 }
-                return RedirectToAction("Index");
+                catch (Exception e)
+                {
+                    ViewBag.Error = e.Message;
+                    return RedirectToAction("Index");
+                }
             }
-            catch (Exception e)
-            {
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Index");
         }
     }
 }
